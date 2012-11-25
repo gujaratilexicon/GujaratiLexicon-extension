@@ -20,18 +20,17 @@ function XmlHTTPRequest(URL, callback){
       //document.getElementById("add").innerHTML =  xhr.responseText;
         
         callback(xhr.responseText); 
-        
-   
+          
       } 
 
      
-  }
-    
+  }   
     
 xhr.send();   
 
     
 }
+
 
 function composeURL( dictType, selectedWord ){
 
@@ -54,6 +53,26 @@ function composeURL( dictType, selectedWord ){
 
 }
 
+function sendTranslation( responsehandler , selectedWord , exactWordInWebPage , finalTranslation )
+{
+
+    if(finalTranslation !== "")
+    { 
+      if(selectedWord.toLowerCase() === exactWordInWebPage.split(' ').join(''))
+      {
+        responsehandler({TW: finalTranslation});
+      }
+      else
+      {
+        responsehandler({TW: "No Exact Match Found.!!"}); 
+      }
+    }
+    else
+    {
+      responsehandler({TW: "Not Found.!!"});
+    }
+}
+
 chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
 
@@ -70,17 +89,24 @@ chrome.extension.onMessage.addListener(
     if(request.SW)
     {
       var tempDictAndWord = request.SW;
-      var dictionaryType = tempDictAndWord[0];
+      var dictionaryType =  parseInt(tempDictAndWord[0]);
       var tempSelectedWord = tempDictAndWord.substr(1 , tempDictAndWord.length);
 
       var URL = composeURL(dictionaryType , tempSelectedWord);
 
+      XmlHTTPRequest(URL , function(tempWebpage){
 
+        document.getElementById('ab').innerHTML =  tempWebpage;
+        
+        var selectAllMetaTag = $('#ab meta');
+        var exactWordInWebpage = $('#ab #details .rc_border .wordbox h1').text();
+
+        var finalTranslation = selectAllMetaTag[1]["content"];
+
+        sendTranslation( sendResponse , tempSelectedWord , exactWordInWebpage , finalTranslation );
+
+      });
 
     }
-
-
-
-
 
   });
