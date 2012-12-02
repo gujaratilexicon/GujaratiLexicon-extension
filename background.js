@@ -90,7 +90,12 @@ chrome.extension.onMessage.addListener(
     {
       var tempDictAndWord = request.SW;
       var dictionaryType =  parseInt(tempDictAndWord[0]);
-      var tempSelectedWord = tempDictAndWord.substr(1 , tempDictAndWord.length);
+      
+      if(dictionaryType === 1)
+      {
+        var tempSelectedWord = tempDictAndWord.substr(3 , tempDictAndWord.length);
+        dictionaryType = tempDictAndWord.substr(0 , 2);
+      }
 
       var URL = composeURL(dictionaryType , tempSelectedWord);
 
