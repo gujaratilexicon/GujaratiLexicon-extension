@@ -1,19 +1,39 @@
 var GujaratiLexicon = {
 
 	selectedWord:'',
+	curDictOpt:'',
 
 	init:function(){
 
 		//Intiliaze Event Handler
-		document.onkeydown = this.handelKeyPress;
-		document.body.onclick = this.removeDictBubble;
-		document.body.addEventListener('dblclick',this.selectedWordNotification,false);
+		if(document)
+		{
+			document.onkeydown = this.handelKeyPress;
+			document.body.onclick = this.removeDictBubble;
+			document.body.addEventListener('dblclick',this.selectedWordNotification,false);
+
+			this.getCurDictOpt();
+		}	
 
 	},
 
+	getCurDictOpt : function(){ //Get Current Dictionary Option and Set it to Global Dictionary Variable (curDictOpt)
+		chrome.extension.sendMessage({getDictOpt: true}, function(response) {
+		this.curDictOpt = response.curDictOpt;
+		});
+		}
+	},
+
 	selectedWordNotification: function(){
+
 		this.selectedWord = window.getSelection().toString().trim();
-		this.wordLangIndentification(this.selectedWord);
+
+		var tempLang = this.wordLangIndentification(this.selectedWord); //Indentify Word Language
+
+		if(tempLang)
+		{
+
+		}
 	},
 
 	handelKeyPress:function(event){
@@ -53,6 +73,22 @@ var GujaratiLexicon = {
 			return false;
 		}
 
+	},
+
+	dictionarySelection : function( language ){
+
+		if(language === 0)
+		{
+
+		}
+		else if(language === 1)
+		{
+
+		}
+		else if(language === 2)
+		{
+
+		}
 	}
 
 };
