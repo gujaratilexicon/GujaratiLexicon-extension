@@ -38,15 +38,15 @@ function composeURL( dictType, selectedWord ){
   {
     return "http://www.gujaratilexicon.com/dictionary/EG/" + selectedWord;
   }
-  else if(dictType === 1)
+  else if(dictType === 1.1)
   {
     return "http://www.gujaratilexicon.com/dictionary/GG/" + selectedWord;
   }
-  else if(dictType === 2)
+  else if(dictType === 1.2)
   {
     return "http://www.gujaratilexicon.com/dictionary/GE/" + selectedWord;
   }
-  else if(dictType === 3)
+  else if(dictType === 2)
   {
     return "http://www.gujaratilexicon.com/dictionary/HG/" + selectedWord;
   }
