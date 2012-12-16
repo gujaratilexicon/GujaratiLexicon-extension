@@ -34,19 +34,19 @@ xhr.send();
 
 function composeURL( dictType, selectedWord ){
 
-  if(dictType === 0)
+  if(dictType === "0.0")
   {
     return "http://www.gujaratilexicon.com/dictionary/EG/" + selectedWord;
   }
-  else if(dictType === 1.1)
+  else if(dictType === "1.1")
   {
     return "http://www.gujaratilexicon.com/dictionary/GG/" + selectedWord;
   }
-  else if(dictType === 1.2)
+  else if(dictType === "1.2")
   {
     return "http://www.gujaratilexicon.com/dictionary/GE/" + selectedWord;
   }
-  else if(dictType === 2)
+  else if(dictType === "2.0")
   {
     return "http://www.gujaratilexicon.com/dictionary/HG/" + selectedWord;
   }
@@ -89,12 +89,12 @@ chrome.extension.onMessage.addListener(
     if(request.SW)
     {
       var tempDictAndWord = request.SW;
-      var dictionaryType =  parseInt(tempDictAndWord[0]);
+     // var dictionaryType =  parseInt(tempDictAndWord[0]);
       
-      if(dictionaryType === 1)
+      //if(dictionaryType === 1)
       {
         var tempSelectedWord = tempDictAndWord.substr(3 , tempDictAndWord.length);
-        dictionaryType = tempDictAndWord.substr(0 , 2);
+        dictionaryType = tempDictAndWord.substr(0 , 3);
       }
 
       var URL = composeURL(dictionaryType , tempSelectedWord);
