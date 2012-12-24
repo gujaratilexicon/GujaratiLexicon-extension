@@ -59,6 +59,51 @@
 	margin-top: 5px;
 }
 
+
+.selectedWord span:first-child{
+
+	position: absolute;
+	left: 140px;
+	top: 0px;
+
+	color: black;
+	text-align: left;
+
+	font-size: 14px;
+	line-height: 16px;
+
+	font-weight: normal;
+	font-family: 'Terminal Dosis', sans-serif;
+	
+	
+	margin-top: 5px;
+	margin-right: 15px;
+
+
+}
+
+.selectedWord span:nth-of-type(2){
+
+	position: absolute;
+	left: 195px;
+	top: 0px;
+
+	color: black;
+	text-align: left;
+
+	font-size: 14px;
+	line-height: 16px;
+
+	font-weight: normal;
+	font-family: 'Terminal Dosis', sans-serif;
+	
+	
+	margin-top: 5px;
+	margin-right: 15px;
+
+
+}
+
 	
 .gujaratiLexiconLink {
 
@@ -72,3 +117,20 @@
 	
 	margin-bottom: 5px;
 }	
+
+.gujaratiLexiconLink a , a:visited , a:hover {
+	color: blue;
+}
+
+
+.glxDictionaryOption{
+
+	font-size: 12px;
+	font-family: 'Terminal Dosis',sans-serif;
+	
+	top:0px;
+
+	
+	margin-left:80px;
+
+}
