@@ -83,7 +83,7 @@ chrome.extension.onMessage.addListener(
   	else if(request.setDictOpt)
   	{
   		setDictonayOption(request.setDictOpt);
-      sendResponse({});
+      sendResponse({Not: "null"});
   	}
 
     if(request.SW)
