@@ -2,11 +2,12 @@ var GujaratiLexicon = {
 
 	selectedWord:'',
 	curDictOpt:'',
+	curLanguage:'',
 	mousePosX:'',
 	mousePosY:'',
-	curDictType:[{"0" : "Eng-Guj" },
-				 {"1" : "Guj-Guj" },
-				 {"2" : "Hin-Guj" }
+	curDictTypeName:[{"0" : ["Eng-Guj"] },
+				 {"1" : ["Guj-Guj","Guj-Eng"]},
+				 {"2" : ["Hin-Guj"] }
 	],
 
 	
@@ -33,10 +34,23 @@ var GujaratiLexicon = {
 		
 	},
 
+	setCurDictOpt : function( dict ){
+
+		chrome.extension.sendMessage({setDictOpt: dict }, function(response) {
+			
+		});
+
+
+	},
+
 	selectedWordNotification: function(event){
 
-		GujaratiLexicon.selectedWord = window.getSelection().toString().trim();
-		var tempLang = GujaratiLexicon.wordLangIndentification(GujaratiLexicon.selectedWord); /*Indentify Word Language*/
+		if(window.getSelection().toString().trim() !== "")
+		{
+			GujaratiLexicon.selectedWord = window.getSelection().toString().trim();
+		}
+
+		GujaratiLexicon.curLanguage = GujaratiLexicon.wordLangIndentification(GujaratiLexicon.selectedWord); /*Indentify Word Language*/
 
 		if($('#GujaratiLexicon').length == 0)
 		{
@@ -45,10 +59,10 @@ var GujaratiLexicon = {
 		}
 		
 
-		if(tempLang !== false)
+		if(GujaratiLexicon.curLanguage !== false)
 		{
-			GujaratiLexicon.curDictType = GujaratiLexicon.dictionarySelection(tempLang);
-			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, "Searching . . ." );
+			GujaratiLexicon.curDictType = GujaratiLexicon.dictionarySelection(GujaratiLexicon.curLanguage);
+			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
 			GujaratiLexicon.getDictTranslation();
 		}
 
@@ -113,13 +127,13 @@ var GujaratiLexicon = {
 	getDictTranslation : function( ){
 		chrome.extension.sendMessage({SW: GujaratiLexicon.curDictType + GujaratiLexicon.selectedWord }, function(response) {
 			
-			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord , response.TW );
+			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord , GujaratiLexicon.curLanguage , response.TW );
 
 	});
 
 	},
 
-	renderBubble : function (mouseX, mouseY, word, meaning){
+	renderBubble : function (mouseX, mouseY, word, wordLanguage ,  meaning){
 		
 		GujaratiLexicon.removeDictBubble();
 		divContainer=document.createElement('div');
@@ -136,6 +150,28 @@ var GujaratiLexicon = {
 		divGLXBubbleSelectedWord.className = 'selectedWord';
 		$('#GujaratiLexicon').append(divGLXBubbleSelectedWord);
 
+		/*divGLXDictOption = document.createElement('div');
+		divGLXDictOption.id = 'GLXDictionaryOption';
+		divGLXDictOption.className = "glxDictionaryOption";*/
+		//$('#GLXBubbleSelectedWord').append(divGLXDictOption);
+
+		var tempSpanString = "";
+
+		for(var i =0; i < GujaratiLexicon.curDictTypeName[wordLanguage][wordLanguage].length ; i++ )
+		{
+			tempSpanString += "<span>" + GujaratiLexicon.curDictTypeName[wordLanguage][wordLanguage][i] + "</span>";
+		}
+
+		$('#GLXBubbleSelectedWord').html( word +  tempSpanString);
+
+		if( $('#GLXBubbleSelectedWord span').length > 1 )
+		{	
+			$('#GLXBubbleSelectedWord span:first').bind( "click" , GujaratiLexicon.setGujGuj);
+			$('#GLXBubbleSelectedWord span:last').bind( "click" , GujaratiLexicon.setGujEng);
+
+		}		
+
+
 		divGLXBubbleTranslatedWord = document.createElement('div');
 		divGLXBubbleTranslatedWord.id = 'GLXBubbleTranslatedWord';
   		divGLXBubbleTranslatedWord.innerHTML =  meaning;
@@ -150,7 +186,30 @@ var GujaratiLexicon = {
 		
 		$('html #GujaratiLexicon').bind('click' , GujaratiLexicon.selectedWordNotification);
 	
-}
+	},
+
+	setGujGuj : function(){
+
+			GujaratiLexicon.setCurDictOpt("1.1");
+			GujaratiLexicon.curDictType = "1.1";
+			
+			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
+			GujaratiLexicon.getDictTranslation();
+		
+	},
+
+	setGujEng : function(){
+
+			GujaratiLexicon.setCurDictOpt("1.2");
+			GujaratiLexicon.curDictType = "1.2";
+
+			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
+			GujaratiLexicon.getDictTranslation();
+
+			
+		
+
+	}
 
 };
 
