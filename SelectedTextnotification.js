@@ -127,7 +127,8 @@ var GujaratiLexicon = {
 	getDictTranslation : function( ){
 		chrome.extension.sendMessage({SW: GujaratiLexicon.curDictType + GujaratiLexicon.selectedWord }, function(response) {
 			
-			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord , GujaratiLexicon.curLanguage , response.TW );
+			//GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord , GujaratiLexicon.curLanguage , response.TW );
+			$('#GujaratiLexicon #GLXBubbleTranslatedWord').text(response.TW);
 
 	});
 
@@ -169,6 +170,21 @@ var GujaratiLexicon = {
 			$('#GLXBubbleSelectedWord span:first').bind( "click" , GujaratiLexicon.setGujGuj);
 			$('#GLXBubbleSelectedWord span:last').bind( "click" , GujaratiLexicon.setGujEng);
 
+			$('#GLXBubbleSelectedWord span').css({ 'cursor': 'hand' , 'cursor': 'pointer',  'color' : 'blue'});
+
+			if( GujaratiLexicon.curDictType === "1.1" )
+			{	
+				$('#GLXBubbleSelectedWord span:first').css({'font-weight' : 'bold'});
+
+			}
+
+			if( GujaratiLexicon.curDictType === "1.2" )
+			{	
+				$('#GLXBubbleSelectedWord span:last').css({'font-weight' : 'bold'});
+
+			}
+
+
 		}		
 
 
@@ -184,7 +200,7 @@ var GujaratiLexicon = {
 		divGLXHyperLink.className = 'gujaratiLexiconLink';
 		divGLXHyperLink.innerHTML = "<a target=\"_blank\" href=\"http://www.gujaratilexicon.com/\">" +  "Powered By:" + "    GujaratiLexicon  " + "</a>";
 		
-		$('html #GujaratiLexicon').bind('click' , GujaratiLexicon.selectedWordNotification);
+		$('html #GujaratiLexicon #GLXBubbleTranslatedWord').bind('dblclick' , GujaratiLexicon.selectedWordNotification);
 	
 	},
 
@@ -193,6 +209,12 @@ var GujaratiLexicon = {
 			GujaratiLexicon.setCurDictOpt("1.1");
 			GujaratiLexicon.curDictType = "1.1";
 			
+			if( GujaratiLexicon.curDictType === "1.1" )
+			{	
+				$('#GLXBubbleSelectedWord span:first').css({'font-weight' : 'bold'});
+
+			}
+
 			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
 			GujaratiLexicon.getDictTranslation();
 		
@@ -203,10 +225,14 @@ var GujaratiLexicon = {
 			GujaratiLexicon.setCurDictOpt("1.2");
 			GujaratiLexicon.curDictType = "1.2";
 
-			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
-			GujaratiLexicon.getDictTranslation();
+			if( GujaratiLexicon.curDictType === "1.2" )
+			{	
+				$('#GLXBubbleSelectedWord span:last').css({'font-weight' : 'bold'});
 
-			
+			}
+
+			GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord, GujaratiLexicon.curLanguage,  "Searching . . ." );
+			GujaratiLexicon.getDictTranslation();		
 		
 
 	}
