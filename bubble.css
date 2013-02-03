@@ -60,9 +60,7 @@
 	margin-top: 5px;
 }
 
-.dictionaryOption{
 
-}
 
 .selectedWord span:first-child{
 
@@ -107,15 +105,22 @@
 	
 }
 
+.closeButton img{
+	position: absolute;
+	left: 268px;
+	top: 4px;	
+}
 	
 .gujaratiLexiconLink {
 
 	font-size: 10px;
 	font-family: 'Terminal Dosis',sans-serif;
 	
+	
 	text-shadow: none;
 	text-align: center;
 	text-decoration: none;
+	font-weight: normal;
 
 	margin-bottom: 5px;
 }	
@@ -123,14 +128,18 @@
 .gujaratiLexiconLink a{
 	color: blue;
 	text-decoration: none;
+	font-weight: normal;
 }
 
 .gujaratiLexiconLink a:visited {
 	color: blue;
 	text-decoration: none;
+	font-weight: normal;
 }
 
 .gujaratiLexiconLink a:hover {
 	color: blue;
 	text-decoration: none;
+	font-weight: normal;
 }
+
