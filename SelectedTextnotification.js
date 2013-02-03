@@ -199,6 +199,16 @@ var GujaratiLexicon = {
 		$('#GujaratiLexicon').append(divGLXHyperLink);
 		divGLXHyperLink.className = 'gujaratiLexiconLink';
 		divGLXHyperLink.innerHTML = "<a target=\"_blank\" href=\"http://www.gujaratilexicon.com/\">" +  "Powered By:" + "    GujaratiLexicon  " + "</a>";
+
+		divCloseButton = document.createElement('div');
+		divCloseButton.id = 'GLXCloseButton';
+		var imageSource = chrome.extension.getURL("/glxCloseButton.png");
+		divCloseButton.innerHTML = "<img src='"+ imageSource + "' alt='X'>";
+		$('#GujaratiLexicon').append(divCloseButton);
+		divCloseButton.className = 'closeButton';
+		$('#GLXCloseButton').bind("click", GujaratiLexicon.removeDictBubble );
+
+		
 		
 		$('html #GujaratiLexicon #GLXBubbleTranslatedWord').bind('dblclick' , GujaratiLexicon.selectedWordNotification);
 	
