@@ -110,6 +110,11 @@
 	left: 268px;
 	top: 4px;	
 }
+
+#GujaratiLexicon #CloseButtonParent div {
+	position: absolute;
+
+}
 	
 .gujaratiLexiconLink {
 

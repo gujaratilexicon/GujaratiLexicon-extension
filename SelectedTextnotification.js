@@ -200,11 +200,14 @@ var GujaratiLexicon = {
 		divGLXHyperLink.className = 'gujaratiLexiconLink';
 		divGLXHyperLink.innerHTML = "<a target=\"_blank\" href=\"http://www.gujaratilexicon.com/\">" +  "Powered By:" + "    GujaratiLexicon  " + "</a>";
 
+		divCloseButtonParent = document.createElement('div');
+		divCloseButtonParent.id = 'CloseButtonParent';
+		$('#GujaratiLexicon').append(divCloseButtonParent);
 		divCloseButton = document.createElement('div');
 		divCloseButton.id = 'GLXCloseButton';
 		var imageSource = chrome.extension.getURL("/glxCloseButton.png");
 		divCloseButton.innerHTML = "<img src='"+ imageSource + "' alt='X'>";
-		$('#GujaratiLexicon').append(divCloseButton);
+		$('#CloseButtonParent').append(divCloseButton);
 		divCloseButton.className = 'closeButton';
 		$('#GLXCloseButton').bind("click", GujaratiLexicon.removeDictBubble );
 
