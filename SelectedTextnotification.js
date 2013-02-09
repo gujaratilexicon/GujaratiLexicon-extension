@@ -151,10 +151,7 @@ var GujaratiLexicon = {
 		divGLXBubbleSelectedWord.className = 'selectedWord';
 		$('#GujaratiLexicon').append(divGLXBubbleSelectedWord);
 
-		/*divGLXDictOption = document.createElement('div');
-		divGLXDictOption.id = 'GLXDictionaryOption';
-		divGLXDictOption.className = "glxDictionaryOption";*/
-		//$('#GLXBubbleSelectedWord').append(divGLXDictOption);
+		
 
 		var tempSpanString = "";
 
