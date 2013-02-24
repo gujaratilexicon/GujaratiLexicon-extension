@@ -24,6 +24,7 @@
 	left: 50%;
 	margin-left: -10px;
 }
+
 .arrow_box:before {
 	border-color: rgba(221, 204, 119, 0);
 	border-bottom-color: #DC7;
@@ -31,6 +32,7 @@
 	left: 50%;
 	margin-left: -13px;
 }
+
 .traslatedWord {
 	color: black;
 	text-align: left;
@@ -46,6 +48,7 @@
 	margin-top: 5px;
 	margin-right: 5px;
 	margin-bottom: 10px;
+	width: 97%
 }
 
 .selectedWord {
@@ -56,17 +59,20 @@
 	line-height: 19px;
 	font-weight: bold;
 	font-family: 'arial', sans-serif;
+	
 	margin-left: 5px;
 	margin-top: 5px;
-}
+	margin-bottom: 0px;
+	margin-right: 0px;
 
+}
 
 
 .selectedWord span:first-child{
 
 	position: absolute;
 	left: 130px;
-	top: 0px;
+	top: 5px;
 
 	color: black;
 	text-align: left;
@@ -78,7 +84,7 @@
 	font-family: 'Terminal Dosis', sans-serif;
 	
 	
-	margin-top: 5px;
+	margin-top: 0px;
 	
 
 }
@@ -87,7 +93,7 @@
 
 	position: absolute;
 	left: 195px;
-	top: 0px;
+	top: 5px;
 
 	color: black;
 	text-align: left;
@@ -99,27 +105,51 @@
 	font-family: 'Terminal Dosis', sans-serif;
 	
 	
-	margin-top: 5px;
+	margin-top: 0px;
 	margin-right: 15px;
 
 	
 }
 
-.closeButton img{
+.closeButton {
 	position: absolute;
 	left: 268px;
-	top: 4px;	
+	top: 4px;
+	
+	height: 8px;
+	width: 8px;
+
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+
+
+		
 }
 
-#GujaratiLexicon #CloseButtonParent div {
+
+
+#GujaratiLexicon #GLXCloseButton div {
 	position: absolute;
+	left: 265px;
+	top:4px;
+	height: 8px;
+	width: 8px;
+
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
 
 }
+
+
+
 	
 .gujaratiLexiconLink {
 
 	font-size: 10px;
 	font-family: 'Terminal Dosis',sans-serif;
+	color: blue;
 	
 	
 	text-shadow: none;
