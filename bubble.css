@@ -7,6 +7,7 @@
 	width: 280px;
 	z-index:2147483647;
 }
+
 .arrow_box:after, .arrow_box:before {
 	bottom: 100%;
 	border: solid transparent;
@@ -14,7 +15,6 @@
 	height: 0;
 	width: 0;
 	position: absolute;
-	
 }
 
 .arrow_box:after {
@@ -52,14 +52,13 @@
 }
 
 .selectedWord {
-
 	color: black;
 	text-align: left;
 	font-size: 16px;
 	line-height: 19px;
 	font-weight: bold;
 	font-family: 'arial', sans-serif;
-	
+
 	margin-left: 5px;
 	margin-top: 5px;
 	margin-bottom: 0px;
@@ -67,9 +66,7 @@
 
 }
 
-
-.selectedWord span:first-child{
-
+.selectedWord span:first-child {
 	position: absolute;
 	left: 130px;
 	top: 5px;
@@ -82,14 +79,11 @@
 
 	font-weight: normal;
 	font-family: 'Terminal Dosis', sans-serif;
-	
-	
-	margin-top: 0px;
-	
 
+	margin-top: 0px;
 }
 
-.selectedWord span:nth-of-type(2){
+.selectedWord span:nth-of-type(2) {
 
 	position: absolute;
 	left: 195px;
@@ -107,8 +101,6 @@
 	
 	margin-top: 0px;
 	margin-right: 15px;
-
-	
 }
 
 .closeButton {
@@ -122,9 +114,6 @@
 	border: 0px;
 	padding: 0px;
 	margin: 0px;
-
-
-		
 }
 
 
@@ -139,28 +128,22 @@
 	border: 0px;
 	padding: 0px;
 	margin: 0px;
-
 }
 
-
-
-	
 .gujaratiLexiconLink {
-
 	font-size: 10px;
 	font-family: 'Terminal Dosis',sans-serif;
 	color: blue;
-	
-	
+
 	text-shadow: none;
 	text-align: center;
 	text-decoration: none;
 	font-weight: normal;
 
 	margin-bottom: 5px;
-}	
+}
 
-.gujaratiLexiconLink a{
+.gujaratiLexiconLink a {
 	color: blue;
 	text-decoration: none;
 	font-weight: normal;
