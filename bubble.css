@@ -66,16 +66,11 @@
 
 }
 
-<<<<<<< HEAD
 #GLXBubbleTranslatedWord {
 	font-family: 'Terminal Dosis', sans-serif;
 }
 
 .selectedWord span:first-child{
-
-=======
-.selectedWord span:first-child {
->>>>>>> b7835a2e8f5824ddc7a5e0071cabf091bd35852b
 	position: absolute;
 	left: 130px;
 	top: 5px;
@@ -124,8 +119,6 @@
 	padding: 0px;
 	margin: 0px;
 }
-
-
 
 #GujaratiLexicon #GLXCloseButton div {
 	position: absolute;
