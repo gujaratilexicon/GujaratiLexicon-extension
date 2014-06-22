@@ -104,7 +104,14 @@ var GujaratiLexicon = {
 	getDictTranslation : function( ){
 		chrome.extension.sendMessage({SW: GujaratiLexicon.curDictType + GujaratiLexicon.selectedWord }, function(response) {
 			//GujaratiLexicon.renderBubble( GujaratiLexicon.mousePosX , GujaratiLexicon.mousePosY , GujaratiLexicon.selectedWord , GujaratiLexicon.curLanguage , response.TW );
+			
+			if(GujaratiLexicon.curLanguage === 0)
+			{
+				$('#GujaratiLexicon #GLXBubblePronunciation').text(response.PRONUNCIATION);
+			}
+			
 			$('#GujaratiLexicon #GLXBubbleTranslatedWord').text(response.TW);
+
 		});
 	},
 
@@ -148,6 +155,15 @@ var GujaratiLexicon = {
 				$('#GLXBubbleSelectedWord span:last').css({'font-weight' : 'bold'});
 			}
 
+		}
+
+		if(GujaratiLexicon.curLanguage === 0)
+		{
+			divGLXBubblePronunciation = document.createElement('div');
+			divGLXBubblePronunciation.id = 'GLXBubblePronunciation';
+			divGLXBubblePronunciation.innerHTML =  "";
+			divGLXBubblePronunciation.className = 'pronunciation';
+			$('#GujaratiLexicon').append(divGLXBubblePronunciation);
 		}
 
 		divGLXBubbleTranslatedWord = document.createElement('div');

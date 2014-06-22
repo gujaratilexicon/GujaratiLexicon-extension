@@ -66,6 +66,21 @@
 
 }
 
+.pronunciation {
+	color: black;
+	text-align: left;
+	font-size: 16px;
+	line-height: 19px;
+	font-weight: bold;
+	font-family: 'arial', sans-serif;
+
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+}
+
+
 #GLXBubbleTranslatedWord {
 	font-family: 'Terminal Dosis', sans-serif;
 }

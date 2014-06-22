@@ -38,10 +38,11 @@ function composeURL( dictType, selectedWord ) {
 	}
 }
 
-function sendTranslation( responsehandler, selectedWord, exactWordInWebPage, finalTranslation ) {
+function sendTranslation( responsehandler, selectedWord, exactWordInWebPage, pronunciation,  finalTranslation ) {
 	if(finalTranslation !== "") {
 		if(selectedWord.toLowerCase() === exactWordInWebPage.split(' ').join('')) {
-			responsehandler({TW: finalTranslation});
+			responsehandler({ TW: finalTranslation,
+							  PRONUNCIATION : pronunciation });
 		}
 		else {
 			responsehandler({TW: "No Exact Match Found.!!"}); 
@@ -78,9 +79,10 @@ chrome.extension.onMessage.addListener(
 		document.getElementById('ab').innerHTML =  tempWebpage;
 		var selectAllMetaTag = $('#ab meta');
 		var exactWordInWebpage = $('#ab #details .rc_border .wordbox h1').text();
+		var pronunciation = $( $('#details .rc_border table tbody td')[2] ).text();
 		var finalTranslation = selectAllMetaTag[1]["content"];
 
-		sendTranslation( sendResponse , tempSelectedWord , exactWordInWebpage , finalTranslation );
+		sendTranslation( sendResponse , tempSelectedWord , exactWordInWebpage , pronunciation, finalTranslation );
 		});
 
 	}
